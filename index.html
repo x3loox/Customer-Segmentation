@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; line-height: 1.6; background: #f4f4f4; color: #333; }
+        header { background: #4CAF50; color: white; padding: 20px 0; text-align: center; }
+        header h1 { margin: 0; font-size: 2em; }
+        nav { background: #333; padding: 10px 0; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        section { padding: 40px 20px; max-width: 1000px; margin: auto; background: white; margin-bottom: 20px; border-radius: 8px; }
+        h2 { color: #4CAF50; }
+        img { max-width: 100%; height: auto; margin: 15px 0; border-radius: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background: #4CAF50; color: white; }
+        footer { background: #333; color: white; text-align: center; padding: 20px 0; }
+        .container { max-width: 1000px; margin: auto; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Customer Segmentation Using Clustering</h1>
+    <p>Elevvo Machine Learning Internship – Task 2</p>
+</header>
+
+<nav>
+    <a href="#problem">Problem</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#results">Results</a>
+    <a href="#insights">Insights</a>
+    <a href="#tools">Tools</a>
+</nav>
+
+<section id="problem">
+    <h2>Problem</h2>
+    <p>
+        The goal of this project is to cluster mall customers into different segments based on their 
+        <strong>Annual Income</strong> and <strong>Spending Score</strong>. The aim is to understand customer 
+        behavior and enable targeted marketing strategies using unsupervised learning techniques.
+    </p>
+</section>
+
+<section id="methodology">
+    <h2>Methodology</h2>
+    <ol>
+        <li>Data Exploration & Visualization: Check missing values, basic statistics, scatter plots of income vs spending score.</li>
+        <li>Feature Scaling: Normalize features using <strong>MinMaxScaler</strong>.</li>
+        <li>K-Means Clustering: Determine optimal number of clusters using <strong>Elbow Method</strong>, train K-Means, visualize clusters.</li>
+        <li>Bonus: DBSCAN Clustering for comparison using <strong>K-Distance plot</strong> to find eps.</li>
+        <li>Cluster Analysis: Calculate average spending score per cluster and visualize using bar charts.</li>
+    </ol>
+
+    <h3>Key Visuals</h3>
+    <img src="visuals/elbow_method_plot.png" alt="Elbow Method Plot">
+    <img src="visuals/customer_segments_KMeans_5.png" alt="K-Means Customer Segments">
+    <img src="visuals/K_Distance_plot_for_DBSCAN.png" alt="K-Distance Plot for DBSCAN">
+    <img src="visuals/DBSCAN_clusters_eps_0.12_min_samples_4.png" alt="DBSCAN Clusters">
+</section>
+
+<section id="results">
+    <h2>Results</h2>
+    <h3>K-Means Cluster Analysis</h3>
+    <table>
+        <tr>
+            <th>Cluster ID</th>
+            <th>Count</th>
+            <th>Min Score</th>
+            <th>Max Score</th>
+            <th>Mean Score</th>
+        </tr>
+        <tr><td>0</td><td>81</td><td>35</td><td>61</td><td>49.543</td></tr>
+        <tr><td>1</td><td>39</td><td>63</td><td>97</td><td>82.128</td></tr>
+        <tr><td>2</td><td>22</td><td>61</td><td>99</td><td>79.364</td></tr>
+        <tr><td>3</td><td>36</td><td>1</td><td>39</td><td>17.583</td></tr>
+        <tr><td>4</td><td>22</td><td>3</td><td>40</td><td>20.227</td></tr>
+    </table>
+    <img src="visuals/average_spending_score_by_KMeans_cluster.png" alt="Average Spending Score by K-Means Cluster">
+    
+    <h3>DBSCAN Cluster Analysis (Noise Excluded)</h3>
+    <table>
+        <tr>
+            <th>Cluster ID</th>
+            <th>Count</th>
+            <th>Mean Spending Score</th>
+            <th>Mean Annual Income</th>
+        </tr>
+        <tr><td>0</td><td>157</td><td>43.102</td><td>52.490</td></tr>
+        <tr><td>1</td><td>35</td><td>82.800</td><td>82.543</td></tr>
+    </table>
+    <img src="visuals/average_spending_score_by_DBSCAN_cluster.png" alt="Average Spending Score by DBSCAN Cluster">
+</section>
+
+<section id="insights">
+    <h2>Insights</h2>
+    <ul>
+        <li>K-Means clustering effectively separated customers into meaningful segments for targeted marketing.</li>
+        <li>DBSCAN revealed alternative clustering structure, with some noise points that might indicate outliers or niche segments.</li>
+        <li>High-spending clusters can be prioritized for premium marketing campaigns.</li>
+        <li>Low-spending clusters can be targeted for loyalty or engagement strategies.</li>
+    </ul>
+</section>
+
+<section id="tools">
+    <h2>Tools & Libraries</h2>
+    <ul>
+        <li>Python</li>
+        <li>Pandas & NumPy</li>
+        <li>Matplotlib & Seaborn</li>
+        <li>Scikit-learn</li>
+    </ul>
+</section>
+
+<footer>
+    <p>Author: AlaEldin Ali | Data Science Enthusiast | ML Intern @ Elevvo</p>
+    <p>GitHub: <a href="https://github.com/x3loox" target="_blank" style="color:white;">https://github.com/x3loox</a></p>
+</footer>
+
+</body>
+</html>
